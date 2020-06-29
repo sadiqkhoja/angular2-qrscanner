@@ -151,16 +151,17 @@ export class QrScannerComponent implements OnInit, OnDestroy, AfterViewInit {
             this.videoElement = this.renderer.createElement('video');
             this.videoElement.setAttribute('autoplay', 'true');
             this.videoElement.setAttribute('muted', 'true');
+            this.videoElement.setAttribute('playsinline','true');
             this.renderer.appendChild(this.videoWrapper.nativeElement, this.videoElement);
         }
         const self = this;
 
         let constraints: MediaStreamConstraints;
         if (_device) {
-            constraints = {audio: false, video: {deviceId: _device.deviceId}};
+            constraints = {audio: false, video: {deviceId: _device.deviceId, facingMode: { exact: "environment" }}};
         } else {
 
-            constraints = {audio: false, video: true};
+            constraints = {audio: false, video: {facingMode: { exact: "environment" }}};
         }
         _navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
             self.setStream(stream);

@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { NgQrScannerModule } from '../../src';
+import { NgQrScannerModuleTemp } from '../../src';
 
 import { AppComponent } from './app.component';
 
 @NgModule({
   imports: [
     BrowserModule,
-    NgQrScannerModule,
+    NgQrScannerModuleTemp,
   ],
   declarations: [
     AppComponent,
